@@ -5,7 +5,7 @@
         <li v-for="(data, index) in skills" :key='index'> {{index}}. {{data.skill}}</li>
       </ul>
 
-      <div v-bind:class="{ alert: showAlert }"></div>
+      <div v-bind:class="{ alert: showAlert, 'class-name': showClass }"></div>
       <!-- use !showAlert for negative check-->
     </div>
   </div>
@@ -20,7 +20,8 @@ export default {
         {'skill': 'Vue.js'},
         {'skill': 'Frontend Dev'}
       ],
-      showAlert: true
+      showAlert: true,
+      showClass: true
     }
   }
 }
@@ -32,8 +33,12 @@ export default {
 
   .alert {
     background-color: red;
-    width: 100%;
+    width: 80%;
     height: 30px
+  }
+
+  .class-name {
+    border: solid 10px blue;
   }
 
 </style>
