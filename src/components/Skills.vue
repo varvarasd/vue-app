@@ -2,8 +2,10 @@
   <div class="skill">
     <div class="holder">
 
-      <input type="text" placeholder="Enter a skill you have..." v-model="skill" >
-      {{ skill }}
+      <form @submit.prevent="addSkill">
+        <input type="text" placeholder="Enter a skill you have..." v-model="skill" >
+      </form>
+
       <ul>
         <li v-for="(data, index) in skills" :key='index'> {{data.skill}} </li>
       </ul>
@@ -24,6 +26,12 @@ export default {
         {'skill': 'Frontend Dev'}
       ]
     }
+  },
+  methods: {
+    addSkill(){
+      this.skills.push({skill: this.skill})
+      this.skill = '';
+    } 
   }
 }
 
