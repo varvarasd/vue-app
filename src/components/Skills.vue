@@ -1,8 +1,13 @@
 <template>
   <div class="skill">
-    {{name}}
-    {{ btnState ? 'Button is disabled' : 'Button is active'}}
-    <button v-on:click="changeName" v-bind:disabled="btnState"> Change Name</button>
+    <div class="holder">
+      <ul>
+        <li v-for="(data, index) in skills" :key='index'> {{index}}. {{data.skill}}</li>
+      </ul>
+
+      <p v-if="skills.length >= 1"> You have more than 1 skills</p>
+      <p v-else>You have less than 1 skills</p>
+    </div>
   </div>
 </template>
 
@@ -11,8 +16,10 @@ export default {
   name: 'Skills',
   data() {
     return{
-      name: 'Teaching',
-      btnState: true
+      skills:[
+        {'skill': 'Vue.js'},
+        {'skill': 'Frontend Dev'}
+      ]
     }
   }
 }
@@ -20,19 +27,6 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-h3 {
-  margin: 40px 0 0;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
-}
+<style src="./skills.css" scoped>
+
 </style>
